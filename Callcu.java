@@ -7,9 +7,9 @@ class Callcu   {
      static String out;
      String vales1="";
      String vales2="";
-    String znac="";
+    String znac=null;
 
-     void vhodScren() {
+     void vhodScren() throws Exception  {
          for(int clear = 0; clear < 100; clear++)
          {
              System.out.println("\b") ;
@@ -21,7 +21,7 @@ class Callcu   {
          argument();
      }
 
-    void argument()  {
+    void argument()throws Exception  {
         String[] data =Callcu.input.split(" ");
         if (data.length !=3) {
             System.err.println("Неправильно введено, нет пробелов между знаком и переменными");
@@ -31,23 +31,24 @@ class Callcu   {
         }
          vales1= data[0];
          vales2= data[2];
-         znac= data[1];
+            if  (prizZnac (data[1])) {
+             znac= data[1];}
 
     }
 
-    boolean prizZnac (){//  ПРОВЕРКА  Выражение  a=b+c,  на предмет математических знаков и сохраняем знак
+    boolean prizZnac (String input) throws Exception {//  ПРОВЕРКА  Выражение  a=b+c,  на предмет математических знаков и сохраняем знак
         String[] znacd = {"*", "/", "+", "-"};
         Boolean z= false;
 
         for (int i= 0; i<znacd.length; i++) {
-            if (znac.equals(znacd[i]) ) {    //только с одним  математ знак.
+            if (input.equals(znacd[i]) ) {    //только с одним  математ знак.
                 z=true;
             }
         }
-            if (!z) {
-                new Errors(1);   // ошибка, нет знака.
+        //if (!z) {
+                //new Errors(1);   // ошибка, нет знака.
 
-            }
+            //  }
 
         return z;
     }
@@ -100,17 +101,6 @@ class Callcu   {
 
         return String.valueOf(sum_m);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
