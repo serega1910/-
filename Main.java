@@ -14,11 +14,12 @@ public class Main  {
     }
 
 
-    public static void main(String[] args) throws Errors {
+    public static void main(String[] args) throws Exception {
         Callcu element = new Callcu();
         element.vhodScren();
         element.argument();
-        element.prizZnac();
+
+       if (element.znac==null) throw new  Errors(1);
 
 
 
